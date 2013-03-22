@@ -1,0 +1,16 @@
+Homework for an Interview
+
+Description:
+Choose a topic of personal interest and create an app using the programming concepts listed below.  Push the app to a live server so we are able to test it.  Remember to provide us with any necessary credentials or instructions. 
+
+Create an application that.....
+
+- Uses partials - render “”
+- Includes google maps API (either map or geocoder) 
+- includes an Ajax request
+- Is able to create, edit and remove records
+- Uses a “has many” association
+- Uses a “has and belongs” to many association
+
+
+by Supatra Indharameesup

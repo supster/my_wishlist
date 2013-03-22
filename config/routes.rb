@@ -1,7 +1,10 @@
 MyWishlist::Application.routes.draw do
+  get "products/index"
+
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  
+  resources :vendors
+ 
   root to: 'static_pages#home'
 
   match '/signup',    to: 'users#new'

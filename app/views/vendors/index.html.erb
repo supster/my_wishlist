@@ -1,0 +1,15 @@
+<% provide(:title, "All Vendors")%>
+<h1>All Vendors</h1>
+
+<%= will_paginate %>
+
+<ul class="users">
+	<% @vendors.each do |vendor| %>
+		<li>
+			<%= link_to vendor.name, vendor %>
+			<%= vendor.street_address %>
+		</li>
+	<% end %>
+</ul>
+
+<%= will_paginate %>

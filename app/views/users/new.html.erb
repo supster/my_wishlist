@@ -1,7 +1,7 @@
 <% provide(:title, 'Sign Up')%>
 <h1>Sign Up</h1>
 <div class="row">
-	<%= render "shared/error"%>
+	<%= render partial: "shared/error", locals: { error: @user } %>
 	<div class="span6 offset3">
 		<%= form_for(@user) do |f| %>
 		<%= f.label :name %>

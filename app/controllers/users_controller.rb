@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      flash[:success] = "Welcome to My Wishlist"
+      flash[:success] = "Welcome to My Vendor Reviews"
       sign_in @user
       redirect_to @user
     else
@@ -47,16 +47,7 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
   
-  private
-  
-  def signed_in_user
-    unless signed_in? 
-      store_location
-      flash[:notice] = "Please sign in."
-      redirect_to signin_path      
-    end
-  end
-  
+  private  
   def correct_user
     @user = User.find(params[:id])
     redirect_to root_path unless current_user?(@user)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130322174630) do
+ActiveRecord::Schema.define(:version => 20130322200939) do
 
   create_table "products", :force => true do |t|
     t.integer  "vendor_id"
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(:version => 20130322174630) do
   end
 
   add_index "products", ["vendor_id"], :name => "index_products_on_vendor_id"
+
+  create_table "reviews", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "vendor_id"
+    t.integer  "review_score"
+    t.string   "review_text"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "reviews", ["vendor_id"], :name => "index_reviews_on_vendor_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

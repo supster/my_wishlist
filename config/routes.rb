@@ -1,18 +1,19 @@
 MyWishlist::Application.routes.draw do
-  get "products/index"
+  #get "products/index"
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  resources :vendors
- 
+  resources :vendors do
+    resources :reviews, only: [:new, :create, :destroy]    
+  end
+   
   root to: 'static_pages#home'
 
   match '/signup',    to: 'users#new'
   
   match '/signin',    to: 'sessions#new'
   match '/signout',   to: 'sessions#destroy', via: :delete
-  
-  
+    
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,0 +1,17 @@
+<% provide(:title, "Review " + @vendor.name)%>
+<h1>Write a review for <%= @vendor.name %></h1>
+<div class="row">
+	<%= render "shared/error", error: @review  %>
+	<div class="span6 offset3">
+		<%= form_for [@vendor, @review] do |f| %>
+			<%= hidden_field_tag :vendor_id, @vendor.id %>
+			<%= f.label  :review_score, "Rating" %>
+			<%= f.select :review_score, options_for_select([[1,1], [2,2], [3,3], [4,4], [5,5]]) %>
+	
+			<%= f.label :review_text %>
+			<%= f.text_area :review_text %>
+					
+			<%= f.submit "Post", class: "btn btn-medium btn-primary" %>
+		<% end %>
+	</div>
+</div>

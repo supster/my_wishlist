@@ -1,0 +1,15 @@
+<% provide(:title, @vendor.name)%>
+<h1>
+	<%= @vendor.name %>
+</h1>
+<div>
+	<h4><%= @vendor.description %></h4>
+	<%= render "address"%>
+	<%= link_to @vendor.url, @vendor.url, target: "_blank" %>
+</div><br>
+<%= link_to "Write a Review", new_vendor_review_path(@vendor), class: "btn btn-small btn btn-success" %>
+<%= link_to "Add to My Favorite", new_vendor_review_path(@vendor), class: "btn btn-small btn btn-primary" %>
+<h4>Reviews</h4>
+<ul class="users">
+	<%= render @reviews %>
+</ul>

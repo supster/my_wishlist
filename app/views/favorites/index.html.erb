@@ -1,0 +1,14 @@
+<% provide(:title, "My Favorites")%>
+<h1>My Favorite Vendors</h1>
+
+<%= will_paginate %>
+
+<ul class="users">
+	<% @favorites.each do |favorite| %>
+		<li>
+			<%= link_to favorite.vendor.name, vendor_path(favorite.vendor_id) %>
+		</li>
+	<% end %>
+</ul>
+
+<%= will_paginate %>

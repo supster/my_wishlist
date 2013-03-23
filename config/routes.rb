@@ -2,9 +2,10 @@ MyWishlist::Application.routes.draw do
   #get "products/index"
 
   resources :users
+  resources :favorites, only: [:index, :create, :destroy]  
   resources :sessions, only: [:new, :create, :destroy]
   resources :vendors do
-    resources :reviews, only: [:new, :create, :destroy]    
+    resources :reviews, only: [:new, :create]
   end
    
   root to: 'static_pages#home'

@@ -1,15 +1,67 @@
 <% provide(:title, @vendor.name)%>
-<h1>
-	<%= @vendor.name %>
-</h1>
-<div>
-	<h4><%= @vendor.description %></h4>
-	<%= render "address"%>
-	<%= link_to @vendor.url, @vendor.url, target: "_blank" %>
-</div><br>
-<div>
-	<%= render "favorites/form_favorite"%>
-	<%= link_to "  Write a Review  ", new_vendor_review_path(@vendor), class: "btn btn-small btn btn-success" %> 
+<% content_for :head do %>
+	<%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCVyEbVVhfHMiI6G4P0SDnxvSCp8bcCMac&sensor=false' %>
+	<script type="text/javascript">
+	
+  	  function codeAddress() {
+ 	  	geocoder = new google.maps.Geocoder();
+   		var address = "<%=  @vendor.street_address + ' ' + @vendor.city + ', ' + @vendor.state_abbr + ' ' + @vendor.zip_code %>";
+		
+	    geocoder.geocode( { 'address': address }, function(results, status) {
+	      if (status == google.maps.GeocoderStatus.OK) {
+			showMap(results[0]);
+	      } else {
+	        $("#map-canvas").html("Google Geocode was not successful for the following reason: <br> " + status);
+	      }
+	    });
+	  }
+
+	  function showMap(geoCodeResult){
+	    var mapOptions = {
+	      center: geoCodeResult.geometry.location,
+	      zoom: 13,
+	      mapTypeId: google.maps.MapTypeId.ROADMAP,
+	      mapMarker: true
+	    };
+	    
+	    var map = new google.maps.Map(document.getElementById("map-canvas"),
+	        mapOptions);
+    		  	
+        var marker = new google.maps.Marker({
+            map: map, 
+            position: geoCodeResult.geometry.location
+        });	  		  	
+	  }
+	
+	  function initialize() {
+	        
+	  	codeAddress();
+
+	  }
+	  
+	  google.maps.event.addDomListener(window, 'load', initialize);
+	</script>  
+<% end %>
+<div class="container-fluid">
+	<h1>
+		<%= @vendor.name %>
+	</h1>
+	<div class="row-fluid">
+		<div class="span7">
+			<div>
+				<h4><%= @vendor.description %></h4>
+				<%= render "address"%>
+				<%= link_to @vendor.url, @vendor.url, target: "_blank" %>
+			</div><br>
+			<div>
+				<%= render "favorites/form_favorite"%>
+				<%= link_to "  Write a Review  ", new_vendor_review_path(@vendor), class: "btn btn-small btn btn-success" %> 
+			</div>
+		</div>
+		<div class="span5">	
+			<div id="map-canvas"></div>
+		</div>
+	</div>
 </div>
 <h4>Reviews</h4>
 <ul class="users">

@@ -45,7 +45,7 @@ namespace :db do
   users.each do |user|
     #vendors.each do |vendor|
       for i in 1..40
-        review_text = Faker::Lorem.paragraph(5)
+        review_text = Faker::Lorem.paragraph(3)
         review_score = [1,2,3,4,5].sample
         review = user.reviews.build(review_text: review_text, review_score: review_score) 
         review.vendor_id = (1..100).to_a.sample

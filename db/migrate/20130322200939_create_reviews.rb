@@ -4,7 +4,7 @@ class CreateReviews < ActiveRecord::Migration
       t.references :user
       t.references :vendor
       t.integer :review_score
-      t.string :review_text
+      t.text :review_text
 
       t.timestamps
     end

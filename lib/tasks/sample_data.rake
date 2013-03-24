@@ -41,15 +41,17 @@ namespace :db do
  #populate reviews
  def make_reviews
   users = User.all(limit: 20)
-  vendors = Vendor.all(limit: 50)
+  #vendors = Vendor.all(limit: 60)
   users.each do |user|
-    vendors.each do |vendor|
-      review_text = Faker::Lorem.paragraph(5)
-      review_score = rand(1..5)
-      review = user.reviews.build(review_text: review_text, review_score: review_score) 
-      review.vendor_id = vendor.id
-      review.save!
-    end
+    #vendors.each do |vendor|
+      for i in 1..40
+        review_text = Faker::Lorem.paragraph(5)
+        review_score = [1,2,3,4,5].sample
+        review = user.reviews.build(review_text: review_text, review_score: review_score) 
+        review.vendor_id = (1..100).to_a.sample
+        review.save!
+        end
+    #end
   end
  end
 

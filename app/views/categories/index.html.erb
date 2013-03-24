@@ -1,0 +1,25 @@
+<% provide(:title, 'Add New Category')%>
+<h1>Category</h1>
+<h2>Add New Category</h2>
+<div class="row">
+	<%= render "shared/error", error: @category  %>
+	<div class="span6 offset3">
+		<%= form_for(@category) do |f| %>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+		
+		<%= f.label :description %>
+		<%= f.text_area :description, rows: 3, cols: 5 %>
+				
+		<%= f.submit "Add", class: "btn btn-medium btn-primary" %>
+		<% end %>
+	</div>
+</div>
+<h2>All Categories</h2>
+<ul class="users">
+	<% @categories.each do |category| %>
+		<li>
+			<%= link_to category.name, category %>
+		</li>
+	<% end %>
+</ul>

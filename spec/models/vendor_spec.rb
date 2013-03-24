@@ -16,6 +16,7 @@ describe Vendor do
   it { should respond_to(:state_abbr)}
   it { should respond_to(:zip_code)}
   it { should respond_to(:url)}
+  it { should respond_to(:categories)}
 
   it { should be_valid }
   

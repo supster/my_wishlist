@@ -1,5 +1,4 @@
 MyWishlist::Application.routes.draw do
-  #get "products/index"
 
   resources :users
   resources :favorites, only: [:index, :create, :destroy]  
@@ -7,6 +6,7 @@ MyWishlist::Application.routes.draw do
   resources :vendors do
     resources :reviews, only: [:new, :create]
   end
+  resources :categories
    
   root to: 'static_pages#home'
 

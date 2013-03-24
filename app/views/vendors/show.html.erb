@@ -50,6 +50,15 @@
 		<div class="span7">
 			<div>
 				<h4><%= @vendor.description %></h4>
+
+				<% if @categories.any? %>
+					Categories: 
+					<% @categories.each_with_index do |category, index| %>
+						<%= category.name %><%= ',' unless (@categories.count-1) == index %>
+					<% end %>
+					<br>
+				<% end %>
+				
 				<%= render "address"%>
 				<%= link_to @vendor.url, @vendor.url, target: "_blank" %>
 			</div><br>

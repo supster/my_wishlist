@@ -3,6 +3,7 @@ class Vendor < ActiveRecord::Base
   has_many :products
   has_many :reviews
   has_many :favorites
+  has_and_belongs_to_many :categories
   
   validates :name, presence: true, length: { maximum: 50 }
 end

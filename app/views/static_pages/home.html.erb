@@ -3,7 +3,7 @@
 	<h1>Welcome to My Reviews</h1>
 	
 	<h4>
-		This application is created to answer AidIn's interview follow up questions.   
+		The purpose of the application is to answer AidIn's interview follow up questions.   
 	</h4>
 	<p>
 		You will be able to:
@@ -12,10 +12,13 @@
 			<li>If you have already signed up for an account, please click "Sign In".</li>
 			<li>Go to "Vendors" to see all vendors in the system.</li>
 			<li>Click on a vendor name to see more information including address, link, map, and reviews.</li>
-			<li>Click "Add to My Favorite" to add a vendor to "My Favorites".</li>
-			<li>Click "My Favorites" to favorite vendors.</li>
+			<li>Click "Add to My Favorite" to add a vendor to "My Favorites". <strong>- Ajax</strong></li>
+			<li>Click "Remove from My Favorite" to remove a vendor to "My Favorites". <strong>- Ajax</strong></li>
+			<li>Click "My Favorites" to see favorite vendors.</li>
 			<li>Click "Write a review" to review for a vendor.</li>
-		</ul>		
+		</ul>	
+		Please note that data was generated using Faker gem.  These are not real names, urls or addresses.  
+		Therefore, you might see "ZERO_RESULTS" error shown on Google map for some of the addresses.
 	</p>
 	
 	<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" if !signed_in? %>

@@ -1,1 +1,1 @@
-$("#fav_form").html("<%= escape_javascript(render('favorites/unfavorite')) %>")
+$("#fav_form").html("<%= escape_javascript(render('favorites/unfavorite', vendor_obj: @vendor)) %>")

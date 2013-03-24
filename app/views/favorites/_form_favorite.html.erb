@@ -1,9 +1,9 @@
 <% if signed_in? %>
 	<div id="fav_form">
 		<% if current_user.favorite?(@vendor.id)  %>
-			<%= render "favorites/favorite"%>
+			<%= render "favorites/unfavorite", 	vendor_obj: @vendor%>
 		<%else%>
-			<%= render "favorites/unfavorite"%>
+			<%= render "favorites/favorite", 	vendor_obj: @vendor %>
 		<% end %>
 	</div>
 <% end %>
